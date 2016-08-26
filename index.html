@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Distword by DistChen</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Distword</h1>
+        <h2>在线浏览、编辑office文档</h2>
+        <a href="https://github.com/DistChen/distword" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p>在线浏览 office 文档一直是个刚需，除了利用Office Web Apps 之外，我也探索了另外一种实现：将 office 文档转成 html，然后嵌入到可编辑的 iframe 中，同时解决浏览和编辑的问题，不过编辑特殊的东西肯定是不行的，比如图表之类的。</p>
+
+<p>将 office 转成 html 用到了 jacob，在 Maven 中央仓库中的地址如下：</p>
+
+<blockquote>
+<p><a href="http://note.youdao.com/">http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22net.sf.jacob-project%22</a></p>
+</blockquote>
+
+<h3>
+<a id="先上demo图选择文档" class="anchor" href="#%E5%85%88%E4%B8%8Ademo%E5%9B%BE%E9%80%89%E6%8B%A9%E6%96%87%E6%A1%A3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>先上demo图，选择文档:</h3>
+
+<p><img src="http://img.blog.csdn.net/20160826193807016" alt="这里写图片描述"></p>
+
+<h3>
+<a id="点击上传程序会自动将word转换成-html并加载到-iframe-中如下" class="anchor" href="#%E7%82%B9%E5%87%BB%E4%B8%8A%E4%BC%A0%E7%A8%8B%E5%BA%8F%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%B0%86word%E8%BD%AC%E6%8D%A2%E6%88%90-html%E5%B9%B6%E5%8A%A0%E8%BD%BD%E5%88%B0-iframe-%E4%B8%AD%E5%A6%82%E4%B8%8B" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>点击上传，程序会自动将word转换成 html，并加载到 iframe 中，如下：</h3>
+
+<p><img src="http://img.blog.csdn.net/20160826193819220" alt="这里写图片描述"></p>
+
+<h3>
+<a id="在转换的过程中会把图表转换成图片由于iframe是可编辑的我们可以对其进行修改并保存保存后会直接下载下来如下所示" class="anchor" href="#%E5%9C%A8%E8%BD%AC%E6%8D%A2%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E4%BC%9A%E6%8A%8A%E5%9B%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E6%88%90%E5%9B%BE%E7%89%87%E7%94%B1%E4%BA%8Eiframe%E6%98%AF%E5%8F%AF%E7%BC%96%E8%BE%91%E7%9A%84%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E5%AF%B9%E5%85%B6%E8%BF%9B%E8%A1%8C%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%BF%9D%E5%AD%98%E4%BF%9D%E5%AD%98%E5%90%8E%E4%BC%9A%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E4%B8%8B%E6%9D%A5%E5%A6%82%E4%B8%8B%E6%89%80%E7%A4%BA" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>在转换的过程中，会把图表转换成图片，由于iframe是可编辑的，我们可以对其进行修改并保存，保存后会直接下载下来，如下所示：</h3>
+
+<p><img src="http://img.blog.csdn.net/20160826193918354" alt="这里写图片描述"></p>
+
+<h3>
+<a id="打开保存下来的文档可以看到内容已经加进来了而且之前变成图片的图表也重新还原成了图表类型仍可以继续编辑" class="anchor" href="#%E6%89%93%E5%BC%80%E4%BF%9D%E5%AD%98%E4%B8%8B%E6%9D%A5%E7%9A%84%E6%96%87%E6%A1%A3%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E5%86%85%E5%AE%B9%E5%B7%B2%E7%BB%8F%E5%8A%A0%E8%BF%9B%E6%9D%A5%E4%BA%86%E8%80%8C%E4%B8%94%E4%B9%8B%E5%89%8D%E5%8F%98%E6%88%90%E5%9B%BE%E7%89%87%E7%9A%84%E5%9B%BE%E8%A1%A8%E4%B9%9F%E9%87%8D%E6%96%B0%E8%BF%98%E5%8E%9F%E6%88%90%E4%BA%86%E5%9B%BE%E8%A1%A8%E7%B1%BB%E5%9E%8B%E4%BB%8D%E5%8F%AF%E4%BB%A5%E7%BB%A7%E7%BB%AD%E7%BC%96%E8%BE%91" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>打开保存下来的文档，可以看到内容已经加进来了，而且之前变成图片的图表也重新还原成了图表类型，仍可以继续编辑：</h3>
+
+<p><img src="http://img.blog.csdn.net/20160826193948870" alt="这里写图片描述"></p>
+
+<p>由于我们可以把 iframe 制作成一个富文本编辑器，所以可以提供更多的编辑功能，如格式化等，或者直接借助已有的富文本编辑器来进行改造。我之前也写过一个简易的富文本编辑器来满足项目的要求，这里就不说 js 制作富文本编辑器的过程和细节了。</p>
+
+<p>这里把一些相应的代码贴上来:</p>
+
+<h3>
+<a id="javaword-转为-html" class="anchor" href="#javaword-%E8%BD%AC%E4%B8%BA-html" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>java：word 转为 html：</h3>
+
+<pre><code>public static boolean WordToHtml(String sourceFile,String targetFile){
+    boolean result=false;
+    ComThread.InitSTA();
+    ActiveXComponent app = new ActiveXComponent("Word.Application");
+    try
+    {
+        app.setProperty("Visible", new Variant(false));
+        Dispatch docs = app.getProperty("Documents").toDispatch();
+        Dispatch doc = Dispatch.invoke(docs, "Open", Dispatch.Method,new Object[] { sourceFile, new Variant(false), new Variant(true) }, new int[1]).toDispatch();
+        Dispatch.invoke(doc, "SaveAs", Dispatch.Method, new Object[] {targetFile, new Variant(Const.WORD_TO_HTML) }, new int[1]);
+        Dispatch.call(doc, "Close", new Variant(false));
+        result=true;
+    }
+    catch (Exception e)
+    {
+        e.printStackTrace();
+        result=false;
+    }
+    finally
+    {
+        app.invoke("Quit", new Variant[]{});
+        ComThread.Release();
+        ComThread.quitMainSTA();
+    }
+    return result;
+}
+</code></pre>
+
+<h3>
+<a id="javahtml-转回-word" class="anchor" href="#javahtml-%E8%BD%AC%E5%9B%9E-word" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>java：html 转回 word:</h3>
+
+<pre><code>public static boolean HTMLToWord(String sourceFile,String targetFile) {
+    boolean result=false;
+    ComThread.InitSTA();
+    ActiveXComponent app = new ActiveXComponent("Word.Application");
+    try {
+        app.setProperty("Visible", new Variant(false));
+        Dispatch htmls = app.getProperty("Documents").toDispatch();
+        Dispatch html = Dispatch.invoke(htmls, "Open", Dispatch.Method, new Object[] { sourceFile, new Variant(false), new Variant(true) }, new int[1]).toDispatch();
+        Dispatch.invoke(html, "SaveAs", Dispatch.Method, new Object[] { targetFile, new Variant(Const.HTML_TO_WORD) }, new int[1]);
+        Variant f = new Variant(false);
+        Dispatch.call(html, "Close", f);
+        result=true;
+    } catch (Exception e) {
+        e.printStackTrace();
+        result=false;
+    } finally {
+        app.invoke("Quit", new Variant[] {});
+        ComThread.Release();
+        ComThread.quitMainSTA();
+    }
+    return result;
+}
+</code></pre>
+
+<p>同样的道理，还可以实现excel、ppt 与 html 的互转。</p>
+
+<h3>
+<a id="javascript上传后加载文档" class="anchor" href="#javascript%E4%B8%8A%E4%BC%A0%E5%90%8E%E5%8A%A0%E8%BD%BD%E6%96%87%E6%A1%A3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>javascript：上传后加载文档</h3>
+
+<pre><code>function display(fileName){
+    var iframe=document.getElementById("WordContainer");
+    iframe.src="word/HtmlWord/"+fileName;
+    iframe.onload = iframe.onreadystatechange = function() {
+        if (this.readyState &amp;&amp; this.readyState != 'complete') {
+            return;
+        }
+        else {
+            var iframeDocument = this.contentDocument || this.contentWindow.document;
+            iframeDocument.body.contentEditable=true;
+        }
+    }
+    $("#htmlid").val(fileName);
+}
+</code></pre>
+
+<h3>
+<a id="javascript编辑文档并保存" class="anchor" href="#javascript%E7%BC%96%E8%BE%91%E6%96%87%E6%A1%A3%E5%B9%B6%E4%BF%9D%E5%AD%98" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>javascript：编辑文档并保存</h3>
+
+<pre><code>function saveWord(){
+    var iframe=document.getElementById("WordContainer");
+    var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+    console.log(iframeDocument.body.innerHTML);
+    var htmlid=$("#htmlid")[0].value;
+    var htmlcontent=iframeDocument.body.innerHTML;
+    $.post("save",
+            {
+                htmlid:htmlid,
+                htmlcontent:htmlcontent
+            },
+            function(data,status){
+                console.log(data);
+            }
+    );
+}
+</code></pre>
+
+<p>我的目的是想开发一款类似“百度 Doc” <a href="http://word.baidu.com/">http://word.baidu.com/</a> 的东西，这样可以丰富、稳固自己的知识，目前正在抽时间筹备中(苦命的打工仔，天天加班)，欢迎各位拍砖、指导，谢谢。</p>
+
+<p><img src="http://img.blog.csdn.net/20160826194616404" alt="这里写图片描述"></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/DistChen/distword/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/DistChen/distword/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/DistChen/distword"></a> is maintained by <a href="https://github.com/DistChen">DistChen</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
