@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Demo">
+    <meta name="keywords" content="Demo">
+    <meta name="author" content="DistChen">
+
+    <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'/>
+    <title>Online Doc</title>
+
+    <link href="css/metro.css" rel="stylesheet">
+    <link href="css/metro-icons.css" rel="stylesheet">
+    <link href="css/metro-responsive.css" rel="stylesheet">
+    <link href="css/metro-schemes.css" rel="stylesheet">
+
+
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/metro.js"></script>
+
+    <script>
+        function specialClick() {
+            var charm = $("#menu-special").data("charm");
+            if (charm.element.data("opened") === true) {
+                charm.close();
+            } else {
+                charm.open();
+            }
+        }
+    </script>
+
+    <style>
+        .distmain {
+            display: block;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            top: 220px;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        .disteditor {
+            display: block;
+            margin: 10px auto;
+            width: 900px;
+            height: 1100px;
+            min-height: 1100px;
+            box-shadow: 0 0 0 1px #d1d1d1, 0 0 3px 1px #ccc;
+            -moz-box-shadow: 0 0 0 1px #d1d1d1, 0 0 3px 1px #ccc;
+            overflow-y: hidden;
+        }
+
+        .distfooter {
+            display: block;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div data-role="charm" id="menu-special" data-position="left">
+            <h1 class="text-light">Special menu</h1>
+        </div>
+
+        <div class="app-bar darcula">
+            <a class="app-bar-element">
+                <span id="toggle-tiles-dropdown" class="mif-file-word mif-2x">Online Doc</span>
+
+                <div class="app-bar-drop-container"
+                     data-role="dropdown"
+                     data-toggle-element="#toggle-tiles-dropdown"
+                     data-no-close="false" style="width: 324px;">
+                    <div class="tile-container bg-white">
+                        <div class="tile-small bg-cyan">
+                            <div class="tile-content iconic">
+                                <span class="icon mif-onedrive"></span>
+                            </div>
+                        </div>
+                        <div class="tile-small bg-yellow">
+                            <div class="tile-content iconic">
+                                <span class="icon mif-google"></span>
+                            </div>
+                        </div>
+                        <div class="tile-small bg-red">
+                            <div class="tile-content iconic">
+                                <span class="icon mif-facebook"></span>
+                            </div>
+                        </div>
+                        <div class="tile-small bg-green">
+                            <div class="tile-content iconic">
+                                <span class="icon mif-twitter"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="app-bar-divider"></div>
+            <div class="app-bar-element place-right">
+                <a class="dropdown-toggle fg-white"><span class="mif-enter"></span> DistChen</a>
+
+                <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true"
+                     style="display: none;">
+                    <div class="padding20">
+                        <form>
+                            <h4 class="text-light">Login to service...</h4>
+
+                            <div class="input-control text">
+                                <span class="mif-user prepend-icon"></span>
+                                <input type="text">
+                            </div>
+                            <div class="input-control text">
+                                <span class="mif-lock prepend-icon"></span>
+                                <input type="password">
+                            </div>
+                            <label class="input-control checkbox small-check">
+                                <input type="checkbox">
+                                <span class="check"></span>
+                                <span class="caption">Remember me</span>
+                            </label>
+
+                            <div class="form-actions">
+                                <button class="button">Login</button>
+                                <button class="button link">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="app-bar-divider place-right"></div>
+        </div>
+
+        <div class="fluent-menu" data-role="fluentmenu" data-on-special-click="specialClick">
+            <ul class="tabs-holder">
+                <li class="special"><a href="#">文件</a></li>
+                <li class="active"><a href="#tab_home">编辑</a></li>
+                <li class="active"><a href="#tab_mailings">插入</a></li>
+                <li><a href="#tab_folder">视图</a></li>
+                <li><a href="#tab_view">表格</a></li>
+                <li><a href="#tab_view">关于</a></li>
+            </ul>
+            <div class="tabs-content">
+                <div class="tab-panel" id="tab_home">
+                    <div class="tab-panel-group">
+                        <div class="tab-group-content">
+                            <button class="fluent-big-button">
+                                <span class="icon mif-envelop"></span>
+                                Create<br/>message
+                            </button>
+                            <div class="tab-content-segment">
+                                <button class="fluent-big-button dropdown-toggle">
+                                    <span class="icon mif-file-picture"></span>
+                                    <span class="label">Create<br/>element</span>
+                                </button>
+                                <ul class="d-menu" data-role="dropdown">
+                                    <li><a href="#">Message</a></li>
+                                    <li><a href="#">Event</a></li>
+                                    <li><a href="#">Meeting</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content-segment">
+                                <button class="fluent-big-button">
+                                    <span class="mif-cancel"></span>
+                                    <span class="label">Delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tab-group-caption">Clipboard</div>
+                    </div>
+                    <div class="tab-panel-group">
+                        <div class="tab-group-content">
+                            <div class="tab-content-segment">
+                                <button class="fluent-button"><span class="mif-loop"></span>Replay</button>
+                                <button class="fluent-button"><span class="mif-infinite"></span>Replay all</button>
+                                <button class="fluent-button"><span class="mif-loop2"></span>Forward</button>
+                            </div>
+                            <div class="tab-content-segment">
+                                <button class="fluent-tool-button"><img src="images/Notebook-Save.png"></button>
+                                <button class="fluent-tool-button"><img src="images/Folder-Rename.png"></button>
+                                <button class="fluent-tool-button"><img src="images/Calendar-Next.png"></button>
+                            </div>
+                        </div>
+                        <div class="tab-group-caption">Reply</div>
+                    </div>
+                    <div class="tab-panel-group">
+                        <div class="tab-group-content">
+                            <div class="input-control text">
+                                <input type="text">
+                                <button class="button"><span class="mif-search"></span></button>
+                            </div>
+                            <button class="fluent-button"><span class="icon-book on-left"></span>Address Book</button>
+                            <div class="tab-content-segment">
+                                <button class="fluent-button dropdown-toggle">
+                                    <span class="mif-filter on-left"></span>
+                                    <span class="label">Mail Filters</span>
+                                </button>
+                                <ul class="d-menu" data-role="dropdown">
+                                    <li><a href="#">Unread messages</a></li>
+                                    <li><a href="#">Has attachments</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Important</a></li>
+                                    <li><a href="#">Broken</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-group-caption">Search</div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="tab_mailings">
+                    <div class="tab-panel-group">
+                        <div class="tab-group-content">
+                            <button class="fluent-big-button">
+                                <span class="icon mif-envelop"></span>
+                                Create<br/>message
+                            </button>
+                            <div class="tab-content-segment">
+                                <button class="fluent-big-button dropdown-toggle">
+                                    <span class="icon mif-file-picture"></span>
+                                    <span class="label">Create<br/>element</span>
+                                </button>
+                                <ul class="d-menu" data-role="dropdown">
+                                    <li><a href="#">Message</a></li>
+                                    <li><a href="#">Event</a></li>
+                                    <li><a href="#">Meeting</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content-segment">
+                                <button class="fluent-big-button">
+                                    <span class="mif-cancel"></span>
+                                    <span class="label">Delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tab-group-caption">Clipboard</div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="tab_folder">
+                    <div class="tab-panel-group">
+                        <div class="tab-group-content">
+                            <div class="tab-content-segment">
+                                <button class="fluent-button"><span class="mif-loop"></span>Replay</button>
+                                <button class="fluent-button"><span class="mif-infinite"></span>Replay all</button>
+                                <button class="fluent-button"><span class="mif-loop2"></span>Forward</button>
+                            </div>
+                            <div class="tab-content-segment">
+                                <button class="fluent-tool-button"><img src="images/Notebook-Save.png"></button>
+                                <button class="fluent-tool-button"><img src="images/Folder-Rename.png"></button>
+                                <button class="fluent-tool-button"><img src="images/Calendar-Next.png"></button>
+                            </div>
+                        </div>
+                        <div class="tab-group-caption">Reply</div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="tab_view">
+                    <div class="tab-panel-group">
+                        <div class="tab-group-content">
+                            <button class="fluent-big-button">
+                                <span class="icon mif-envelop"></span>
+                                Create<br/>message
+                            </button>
+                            <div class="tab-content-segment">
+                                <button class="fluent-big-button dropdown-toggle">
+                                    <span class="icon mif-file-picture"></span>
+                                    <span class="label">Create<br/>element</span>
+                                </button>
+                                <ul class="d-menu" data-role="dropdown">
+                                    <li><a href="#">Message</a></li>
+                                    <li><a href="#">Event</a></li>
+                                    <li><a href="#">Meeting</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                            <div class="tab-content-segment">
+                                <button class="fluent-big-button">
+                                    <span class="mif-cancel"></span>
+                                    <span class="label">Delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="tab-group-caption">Clipboard</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="distmain">
+            <div id="DistEditor" class="disteditor">
+                <iframe id="WordContainer" width="100%" height="100%" style="overflow-y: hidden;" frameborder="0"></iframe>
+                <script>
+                    var iframe = document.getElementById("WordContainer");
+                    iframe.src = "word/HtmlWord/demo.html";
+                    iframe.onload = iframe.onreadystatechange = function () {
+                        var _iframe=this;
+                        var container=document.getElementById("DistEditor");
+                        var iframeDocument = this.contentDocument || this.contentWindow.document;
+                        iframeDocument.body.contentEditable = true;
+                        iframeDocument.body.style.overflowY = "hidden";
+                        iframeDocument.body.style.margin = "8px";
+                        iframeDocument.body.style.padding = "100px";
+                        iframeDocument.body.style.cursor = "text";
+
+                        var height=iframeDocument.body.scrollHeight+"px";
+                        this.style.height =height;
+                        container.style.height = height;
+
+                        //console.log(iframeDocument.body.scrollHeight+","+iframeDocument.documentElement.scrollHeight);
+                        window.setInterval(function(){
+                            var _height =  iframeDocument.body.scrollHeight+"px";
+                            _iframe.style.height = _height;
+                            container.style.height = _height;
+                        }, 200);
+                    }
+                </script>
+            </div>
+            <div class="distfooter">
+                DistDoc &nbsp;©&nbsp; DistChen
+            </div>
+        </div>
+    </div>
+</body>
+</html>

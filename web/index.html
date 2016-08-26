@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.fileupload.js"></script>
+    <script>
+        function uploadFile(){
+            $.ajaxFileUpload(
+                {
+                    url: 'upload',
+                    secureuri: false,           //一般设置为false
+                    fileElementId: "file", //文件上传控件的id属性  <input type="file" id="file" name="file" /> 注意，这里一定要有name值
+                    dataType: 'text',//返回值类型 一般设置为json
+                    complete: function () {//只要完成即执行，最后执行
+                        console.log("complete");
+                    },
+                    success: function (data, status)  //服务器成功响应处理函数
+                    {
+                        var fileName=data.replace('<pre style="word-wrap: break-word; white-space: pre-wrap;">',"").replace('</pre>',"").replace('<pre>',"");
+                        display(fileName);
+                    },
+                    error: function (data, status, e)//服务器响应失败处理函数
+                    {
+                        console.log("error:"+e);
+                    }
+                }
+            );
+        }
+        function saveWord(){
+            var iframe=document.getElementById("WordContainer");
+            var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+            console.log(iframeDocument.body.innerHTML);
+            var htmlid=$("#htmlid")[0].value;
+            var htmlcontent=iframeDocument.body.innerHTML;
+            $.post("save",
+                    {
+                        htmlid:htmlid,
+                        htmlcontent:htmlcontent
+                    },
+                    function(data,status){
+                        console.log(data);
+                    }
+            );
+        }
+        function load(fileName){
+            var iframe=document.getElementById("WordContainer");
+            iframe.src="word/HtmlWord/"+fileName;
+            iframe.onload = iframe.onreadystatechange = function() {
+                if (this.readyState && this.readyState != 'complete') {
+                    return;
+                }
+                else {
+                    var iframeDocument = this.contentDocument || this.contentWindow.document;
+                    iframeDocument.body.contentEditable=true;
+                }
+            }
+            $("#htmlid").val(fileName);
+        }
+    </script>
+</head>
+<body>
+    <div style="text-align: center;">
+        <div>
+            <input type="file" id="file" name="file" />
+            <input id="htmlid" name="htmlid" type="hidden" value="">
+            <button onclick="uploadFile();">上传</button>
+            <button onclick="saveWord();">保存</button>
+        </div>
+        <iframe id="WordContainer" frameborder="1" style="width: 21cm; height: 23.7cm;">
+        </iframe>
+    </div>
+</body>
+</html>
