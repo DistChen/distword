@@ -1,4 +1,4 @@
- 在线浏览 office 文档一直是个刚需，除了利用Office Web Apps 之外，我也探索了另外一种实现：将 office 文档转成 html，然后嵌入到可编辑的 iframe 中，同时解决浏览和编辑的问题，不过编辑特殊的东西肯定是不行的，比如图表之类的。
+ 在线浏览 office 文档一直是个刚需，除了利用[Office Web Apps](http://www.chenyp.com/2016/03/15/office-online/) 之外，我也探索了另外一种实现：将 office 文档转成 html，然后嵌入到可编辑的 iframe 中，同时解决浏览和编辑的问题，不过编辑特殊的东西肯定是不行的，比如图表之类的。
 
 将 office 转成 html 用到了 jacob，在 Maven 中央仓库中的地址如下：
 > [http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22net.sf.jacob-project%22](http://note.youdao.com/)
